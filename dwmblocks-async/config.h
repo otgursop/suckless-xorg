@@ -18,9 +18,11 @@
 
 // Define blocks for the status feed as X(icon, cmd, interval, signal).
 #define BLOCKS(X) \
-    X("| 🌐 ", "echo $(xset -q|grep LED| awk '{ if (substr($10,5,1) == 1)  print \"RU\"; else print \"EN\"; }')", 1, 5) \
-    X("", "amixer get Master | grep -q \"\\[off\\]\" && echo \" \" || amixer get Master | awk -F\"[][]\" '/%/ {printf \"  %s\", $2; exit}'", 1, 2) \
-    X(" ", "free -h | awk '/^Mem/ { print $3\"/\"$2 }' | sed s/i//g", 5, 9) \
-    X("", "echo $(date '+󰃰 %d.%m -  %H:%M')\" ┊\"", 5, 0)
+    X(" | ", "amixer get Master | grep -q \"\\[off\\]\" && echo \"sound is off\" || amixer get Master | awk -F\"[][]\" '/%/ {printf \"%s\", $2; exit}'", 1, 2) \
+    X("", "echo $(date '+%d.%m - %H:%M')\" |\"", 5, 0)
 
 #endif  // CONFIG_H
+
+// X("| 🌐 ", "echo $(xset -q|grep LED| awk '{ if (substr($10,5,1) == 1)  print \"RU\"; else print \"EN\"; }')", 1, 5)
+//  X(" ", "free -h | awk '/^Mem/ { print $3\"/\"$2 }' | sed s/i//g", 5, 9)
+
