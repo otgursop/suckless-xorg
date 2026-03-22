@@ -110,7 +110,7 @@ char *colors[][2] = {
 	[SchemeMid]  = { "#eeeeee", "#770000" },
 	#endif // MORECOLOR_PATCH
 	#if HIGHLIGHT_PATCH
-	[SchemeSelHighlight]  = { "#ffc978", "#005577" },
+	[SchemeSelHighlight]  = { "#d65d0e", "#282828" },
 	[SchemeNormHighlight] = { "#ffc978", "#222222" },
 	#endif // HIGHLIGHT_PATCH
 	#if HIGHPRIORITY_PATCH
