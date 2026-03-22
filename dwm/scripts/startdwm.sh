@@ -4,7 +4,7 @@
 setxkbmap us,ru -option 'grp:alt_shift_toggle,caps:none' &
 
 # Wallpapers
-feh --bg-scale ~/Pictures/wallpapers/wallpaper15.png &
+# feh --bg-scale ~/Pictures/wallpapers/wallpaper15.png &
 
 # Tray
 flameshot &

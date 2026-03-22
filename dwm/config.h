@@ -179,7 +179,7 @@ static const char dmenufont[]            = "JetBrainsMono Nerd Font:size=12:styl
 static char c000000[]                    = "#000000"; // placeholder value
 
 static char normfgcolor[]                = "#ebdbb2";
-static char normbgcolor[]                = "#282828";
+static char normbgcolor[]                = "#363333";
 static char normbordercolor[]            = "#504945";
 static char normfloatcolor[]             = "#504945";
 
@@ -1064,6 +1064,7 @@ static const Key keys[] = {
   { MODKEY|ShiftMask,             XK_w,          spawn,                  {.v = filemanager } },
   /* utils */
 	{ MODKEY,                       XK_s,          spawn,                  {.v = lockscreen } },
+  { MODKEY,                       XK_x,          spawn,                  SHCMD("xcolor | xclip -i -f -selection clipboard") },
   { 0,                            XK_Print,      spawn,                  {.v = screenshot } },
 
   /* volume and brightness control (<X11/XF86keysym.h> included) */
