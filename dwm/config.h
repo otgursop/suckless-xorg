@@ -18,7 +18,7 @@ static const unsigned int borderpx       = 3;   /* border pixel of windows */
 /* This allows the bar border size to be explicitly set separately from borderpx.
  * If left as 0 then it will default to the borderpx value of the monitor and will
  * automatically update with setborderpx. */
-static const unsigned int barborderpx    = 5;  /* border pixel of bar */
+static const unsigned int barborderpx    = 3;  /* border pixel of bar */
 #endif // BAR_BORDER_PATCH
 static const unsigned int snap           = 5;  /* snap pixel */
 #if SWALLOW_PATCH
@@ -899,7 +899,7 @@ static const char *dmenucmd[] = {
 	"dmenu_run",
 	#if !NODMENU_PATCH
 	"-m", dmenumon,
-  "-p", "Execute:",
+  "-p", "exec:",
 	#endif // NODMENU_PATCH
 	"-fn", dmenufont,
 	"-nb", normbgcolor,
@@ -1087,7 +1087,7 @@ static const Key keys[] = {
 	#if RIODRAW_PATCH
 	{ MODKEY|ControlMask,           XK_p,          riospawnsync,           {.v = dmenucmd } },
 	{ MODKEY|ControlMask,           XK_Return,     riospawn,               {.v = termcmd } },
-	{ MODKEY,                       XK_s,          rioresize,              {0} },
+	// { MODKEY,                       XK_s,          rioresize,              {0} },
 	#endif // RIODRAW_PATCH
 	{ MODKEY,                       XK_b,          togglebar,              {0} },
 	#if TOGGLETOPBAR_PATCH
@@ -1234,7 +1234,7 @@ static const Key keys[] = {
 	#endif // SHIFTSWAPTAGS_PATCH
 	#if BAR_WINTITLEACTIONS_PATCH
 	{ MODKEY|ControlMask,           XK_z,          showhideclient,         {0} },
-	{ MODKEY|ControlMask,           XK_s,          unhideall,              {0} },
+	// { MODKEY|ControlMask,           XK_s,          unhideall,              {0} },
 	#endif // BAR_WINTITLEACTIONS_PATCH
 	{ MODKEY|ShiftMask,             XK_c,          killclient,             {0} },
 	#if KILLUNSEL_PATCH
@@ -1314,7 +1314,7 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_f,          fullscreen,             {0} },
 	#endif // FULLSCREEN_PATCH
 	#if STICKY_PATCH
-	{ MODKEY|ShiftMask,             XK_s,          togglesticky,           {0} },
+	// { MODKEY|ShiftMask,             XK_s,          togglesticky,           {0} },
 	#endif // STICKY_PATCH
 	#if SCRATCHPAD_ALT_1_PATCH
 	{ MODKEY,                       XK_minus,      scratchpad_show,        {0} },
