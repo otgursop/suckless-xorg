@@ -19,8 +19,8 @@
 // Define blocks for the status feed as X(icon, cmd, interval, signal).
 #define BLOCKS(X) \
     X("🌐 ", "echo $(xset -q|grep LED| awk '{ if (substr($10,5,1) == 1)  print \"RU\"; else print \"EN\"; }')", 1, 5) \
-    X("", "amixer get Master | grep -q \"\\[off\\]\" && echo \" muted\" || amixer get Master | awk -F\"[][]\" '/%/ {printf \"  %s\", $2; exit}'", 1, 2) \
-    X("", "echo  $(date '+%d.%m - 󰃰 %H:%M')", 5, 0)
+    X("", "amixer get Master | grep -q \"\\[off\\]\" && echo \" Muted\" || amixer get Master | awk -F\"[][]\" '/%/ {printf \"  %s\", $2; exit}'", 1, 2) \
+    X("", "echo  $(date '+%H:%M - 󰃰 %d.%m')", 5, 0)
 
 #endif  // CONFIG_H
 
