@@ -33,7 +33,7 @@ static int restrict_return = 0;             /* -1 option; if 1, disables shift-r
 #endif // RESTRICT_RETURN_PATCH
 /* -fn option overrides fonts[0]; default X11 font or font set */
 #if PANGO_PATCH
-static char *font = "monospace 10";
+static char *font = "JetBrainsMono Nerd Font 12";
 #else
 #if XRESOURCES_PATCH
 static char *fonts[] =
@@ -41,7 +41,7 @@ static char *fonts[] =
 static const char *fonts[] =
 #endif // XRESOURCES_PATCH
 {
-	"monospace:size=10"
+	"JetBrainsMono Nerd Font:size=12"
 };
 #endif // PANGO_PATCH
 #if MANAGED_PATCH
@@ -100,11 +100,11 @@ const
 #endif // XRESOURCES_PATCH
 char *colors[][2] = {
 	/*               fg         bg       */
-	[SchemeNorm] = { "#bbbbbb", "#222222" },
-	[SchemeSel]  = { "#eeeeee", "#005577" },
+	[SchemeNorm] = { "#ebdbb2", "#282828" },
+	[SchemeSel]  = { "#fbf1c7", "#d65d0e" },
 	[SchemeOut]  = { "#000000", "#00ffff" },
 	#if BORDER_PATCH
-	[SchemeBorder] = { "#000000", "#005577" },
+	[SchemeBorder] = { "#fbf1c7", "#d65d0e" },
 	#endif // BORDER_PATCH
 	#if MORECOLOR_PATCH
 	[SchemeMid]  = { "#eeeeee", "#770000" },
@@ -171,7 +171,7 @@ static Key quit_keys[] = {
 
 #if BORDER_PATCH
 /* Size of the window border */
-static unsigned int border_width = 4;
+static unsigned int border_width = 0;
 #endif // BORDER_PATCH
 
 #if PREFIXCOMPLETION_PATCH
