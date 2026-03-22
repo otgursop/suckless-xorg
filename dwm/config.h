@@ -178,7 +178,7 @@ static const char dmenufont[]            = "JetBrainsMono Nerd Font:size=12:styl
 
 static char c000000[]                    = "#000000"; // placeholder value
 
-static char normfgcolor[]                = "#ebdbb2";
+static char normfgcolor[]                = "#fbf1c7";
 static char normbgcolor[]                = "#282828";
 static char normbordercolor[]            = "#504945";
 static char normfloatcolor[]             = "#504945";
@@ -1083,7 +1083,7 @@ static const Key keys[] = {
   // { ShiftMask,				          	XK_Alt_L,      spawn,		               SHCMD("kill -39 $(pidof dwmblocks)") },
 	// { Mod1Mask,					          	XK_Shift_L,    spawn,		               SHCMD("kill -39 $(pidof dwmblocks)") },
 
-  { 0,                            XK_ISO_Next_Group,          spawn,     SHCMD("kill -39 $(pidof dwmblocks)") },
+  { 0,                            XK_ISO_Next_Group,          spawn,     SHCMD("pkill -RTMIN+1 dwmblocks") },
 
 	#if RIODRAW_PATCH
 	{ MODKEY|ControlMask,           XK_p,          riospawnsync,           {.v = dmenucmd } },
