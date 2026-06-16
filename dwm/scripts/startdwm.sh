@@ -21,6 +21,9 @@ dwmblocks &
 # Compositor
 picom -b 
 
+# Clipboard manager
+copyq &
+
 # Mouse settings
 # Turn off the acceleration
 (sleep 2 && \
@@ -32,6 +35,9 @@ xset m 0 0 2>/dev/null) &
 
 # Keyboard settings
 xset r rate 400 35 &
+
+# Monitor settings
+xrandr --rate 120 &
 
 # DWM
 while true; do
