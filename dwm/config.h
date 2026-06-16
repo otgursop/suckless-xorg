@@ -31,11 +31,11 @@ static const int scalepreview            = 4;        /* Tag preview scaling */
 static int nomodbuttons                  = 1;   /* allow client mouse button bindings that have no modifier */
 #endif // NO_MOD_BUTTONS_PATCH
 #if VANITYGAPS_PATCH
-static const unsigned int gappih         = 0;  /* horiz inner gap between windows */
-static const unsigned int gappiv         = 0;  /* vert inner gap between windows */
-static const unsigned int gappoh         = 0;  /* horiz outer gap between windows and screen edge */
-static const unsigned int gappov         = 0;  /* vert outer gap between windows and screen edge */
-static const int smartgaps_fact          = 0;   /* gap factor when there is only one client; 0 = no gaps, 3 = 3x outer gaps */
+static const unsigned int gappih         = 8;  /* horiz inner gap between windows */
+static const unsigned int gappiv         = 8;  /* vert inner gap between windows */
+static const unsigned int gappoh         = 8;  /* horiz outer gap between windows and screen edge */
+static const unsigned int gappov         = 8;  /* vert outer gap between windows and screen edge */
+static const int smartgaps_fact          = 1;   /* gap factor when there is only one client; 0 = no gaps, 3 = 3x outer gaps */
 #endif // VANITYGAPS_PATCH
 #if AUTOSTART_PATCH
 static const char autostartblocksh[]     = "autostart_blocking.sh";
@@ -97,7 +97,7 @@ static const int statusmon               = 0;
 static const int statusmon               = 'A';
 #endif // BAR_STATUSALLMONS_PATCH | BAR_STATICSTATUS_PATCH
 #if BAR_STATUSPADDING_PATCH
-static const int horizpadbar             = 2;   /* horizontal padding for statusbar */
+static const int horizpadbar             = -1;   /* horizontal padding for statusbar */
 static const int vertpadbar              = 0;   /* vertical padding for statusbar */
 #endif // BAR_STATUSPADDING_PATCH
 #if BAR_STATUSBUTTON_PATCH
@@ -170,11 +170,11 @@ static void (*bartabmonfns[])(Monitor *) = { NULL /* , customlayoutfn */ };
 #endif // MONOCLE_LAYOUT
 #endif // BAR_TABGROUPS_PATCH
 #if BAR_PANGO_PATCH
-static const char font[]                 = "JetBrainsMono Nerd Font 12";
+static const char font[]                 = "JetBrainsMono Nerd Font 14";
 #else
-static const char *fonts[]               = { "JetBrainsMono Nerd Font:size=12:style=Medium" };
+static const char *fonts[]               = { "JetBrainsMono Nerd Font:size=12:style=SemiBold" };
 #endif // BAR_PANGO_PATCH
-static const char dmenufont[]            = "JetBrainsMono Nerd Font:size=12:style=Medium";
+static const char dmenufont[]            = "JetBrainsMono Nerd Font:size=12:style=SemiBold";
 
 static char c000000[]                    = "#000000"; // placeholder value
 
@@ -657,7 +657,7 @@ static const BarRule barrules[] = {
 };
 
 /* layout(s) */
-static const float mfact     = 0.5; /* factor of master area size [0.05..0.95] */
+static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
 #if FLEXTILE_DELUXE_LAYOUT
 static const int nstack      = 0;    /* number of clients in primary stack area */
@@ -912,7 +912,7 @@ static const char *dmenucmd[] = {
 	NULL
 };
 
-static const char *termcmd[] = { "st", NULL };
+static const char *termcmd[] = { "st", "-e", "tmux", NULL };
 static const char *browser[] = { "librewolf", NULL };
 static const char *filemanager[] = { "st", "-e", "yazi", NULL };
 

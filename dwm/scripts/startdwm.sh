@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Keyboard layouts
-setxkbmap us,ru -option 'grp:alt_shift_toggle,caps:none' &
+# setxkbmap us,ru -option 'grp:alt_shift_toggle,caps:none' &
 
 # Wallpapers
 #feh --bg-scale ~/Pictures/wallpapers/wallpaper15.png &
@@ -10,7 +10,7 @@ hsetroot -solid "#363333" &
 # Tray
 flameshot &
 nm-applet &
-# blueman-applet &
+blueman-applet &
 
 # Notifications
 dunst &
@@ -29,6 +29,9 @@ for id in $(xinput list | grep -i pointer | sed 's/.*id=\([0-9]*\).*/\1/'); do
     xinput set-prop $id "libinput Accel Speed" 0 2>/dev/null
 done && \
 xset m 0 0 2>/dev/null) &
+
+# Keyboard settings
+xset r rate 400 35 &
 
 # DWM
 while true; do
