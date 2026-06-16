@@ -1,23 +1,38 @@
 #!/bin/bash
 
-$choice=$(echo -e "
-udisks2: on\n
-udisks2: off
-" | dmenu -c -bw 3 -l 2 -i -p "choose:")
+options="Zapret: start
+Zapret: stop
+udisks2: unmask & start
+udisks2: stop & mask"
+
+choice=$(echo -e "$options" | dmenu -c -bw 3 -l 6 -i -fn "JetBrainsMono Nerd Font:size=12:style=SemiBold" -p "Choose:")
 
 case "$choice" in
-  "udisks2: on") 
-    pkexec systemctl unmask udisks2 \
-    && pkexec systemctl start udisks2 \
-    && systemctl is-active --quiet udisks2 \
-    && notify-send "udisks2 has been unmasked and started" \
-    || notify-send "Failed to unmask or start udisks2"
-  ;;
-  "udisks2: off") 
-    pkexec systemctl stop udisks2 \
-    && pkexec systemctl mask udisks2 \
-    && ! systemctl is-active --quiet udisks2 \
-    && notify-send "udisks2 has been stopped and masked" \
-    || notify-send "Failed to unmask or start udisks2"
-  ;;
+    "Zapret: start")
+        systemctl start zapret \
+        && systemctl is-active --quiet zapret \
+        && notify-send "Zapret has been started" \
+        || notify-send "Failed to start Zapret"
+        ;;
+    "Zapret: stop")
+        systemctl stop zapret && notify-send "Zapret has been stopped" || notify-send "Failed to stop Zapret"
+        ;;
+    "udisks2: unmask & start")
+        pkexec systemctl unmask udisks2 \
+        && pkexec systemctl start udisks2 \
+        && systemctl is-active --quiet udisks2 \
+        && notify-send "udisks2 has been unmasked and started" \
+        || notify-send "Failed to unmask or start udisks2"
+        ;;
+    "udisks2: stop & mask")
+        pkexec systemctl stop udisks2 \
+        && pkexec systemctl mask udisks2 \
+        && ! systemctl is-active --quiet udisks2 \
+        && notify-send "udisks2 has been stopped and masked" \
+        || notify-send "Failed to stop or mask udisks2"
+        ;;
+    "")
+        exit 0
+        ;;
 esac
+

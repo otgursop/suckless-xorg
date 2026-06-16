@@ -24,6 +24,9 @@ picom -b
 # Clipboard manager
 copyq &
 
+# Authentication agent
+/usr/lib/mate-polkit/polkit-mate-authentication-agent-1 &
+
 # Mouse settings
 # Turn off the acceleration
 (sleep 2 && \
