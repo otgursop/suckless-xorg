@@ -901,6 +901,9 @@ static const char *dmenucmd[] = {
 	"-m", dmenumon,
   "-p", "exec:",
 	#endif // NODMENU_PATCH
+  "-c",
+  "-bw", "3",
+  "-l", "10",
 	"-fn", dmenufont,
 	"-nb", normbgcolor,
 	"-nf", normfgcolor,
@@ -917,8 +920,6 @@ static const char *browser[] = { "librewolf", NULL };
 static const char *filemanager[] = { "st", "-e", "yazi", NULL };
 
 static const char *lockscreen[] = { "slock", NULL };
-
-static const char *screenshot[] = { "flameshot", "gui", NULL };
 
 #if BAR_STATUSCMD_PATCH
 #if BAR_DWMBLOCKS_PATCH
@@ -1058,14 +1059,23 @@ static const Key keys[] = {
 	#endif // KEYMODES_PATCH
 
   /* programs */
-	{ MODKEY,                       XK_p,          spawn,                  {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return,     spawn,                  {.v = termcmd } },
   { MODKEY|ShiftMask,             XK_r,          spawn,                  {.v = browser } },
   { MODKEY|ShiftMask,             XK_w,          spawn,                  {.v = filemanager } },
   /* utils */
 	{ MODKEY,                       XK_s,          spawn,                  {.v = lockscreen } },
   { MODKEY,                       XK_x,          spawn,                  SHCMD("xcolor | xclip -i -f -selection clipboard") },
-  { 0,                            XK_Print,      spawn,                  {.v = screenshot } },
+
+  /* screenshoter */
+  { 0,                            XK_Print,      spawn,                  SHCMD("scrot -s ~/pictures/screenshots/screenshot-%Y-%m-%d_%H-%M-%S.png -e 'xclip -selection clipboard -t image/png -i $f && dunstify -a \"scrot\" -i \"$f\" \"Screenshot saved (area)\" \"Copied in clipboard\"'") },
+  { 0|ShiftMask,                  XK_Print,      spawn,                  SHCMD("scrot ~/pictures/screenshots/screenshot-%Y-%m-%d_%H-%M-%S.png -e 'xclip -selection clipboard -t image/png -i $f && dunstify -a \"scrot\" -i \"$f\" \"Screenshot saved (screen)\" \"Copied in clipboard\"'") },
+
+
+
+  /* dmenu */
+	{ MODKEY,                       XK_p,          spawn,                  {.v = dmenucmd } },
+	{ MODKEY,                       XK_n,          spawn,                  SHCMD("~/.local/sl/dmenu/scripts/power.sh") },
+	{ MODKEY|ShiftMask,             XK_n,          spawn,                  SHCMD("~/.local/sl/dmenu/scripts/systemd.sh") },
 
   /* volume and brightness control (<X11/XF86keysym.h> included) */
 	{ 0,                            XF86XK_AudioMute,           spawn,     SHCMD("pactl set-sink-mute 0 toggle") },

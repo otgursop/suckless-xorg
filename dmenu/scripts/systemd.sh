@@ -5,7 +5,7 @@ Zapret: stop
 udisks2: unmask & start
 udisks2: stop & mask"
 
-choice=$(echo -e "$options" | dmenu -c -bw 3 -l 6 -i -fn "JetBrainsMono Nerd Font:size=12:style=SemiBold" -p "Choose:")
+choice=$(echo -e "$options" | dmenu -c -bw 3 -l 6 -i -fn "JetBrainsMono Nerd Font:size=12:style=SemiBold" -p "choose:")
 
 case "$choice" in
     "Zapret: start")

@@ -8,7 +8,7 @@
 hsetroot -solid "#363333" &
 
 # Tray
-flameshot &
+# flameshot &
 nm-applet &
 blueman-applet &
 
