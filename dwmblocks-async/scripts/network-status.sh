@@ -28,5 +28,5 @@ if [ -n "$iface" ]; then
         echo "🔗 ETH"
     fi
 else
-    echo "❌ No Net"
+    echo "❌ Disconnected"
 fi

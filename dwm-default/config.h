@@ -98,6 +98,7 @@ static const Key keys[] = {
 	// { Mod1Mask,					          	XK_Shift_L,    spawn,		               SHCMD("kill -39 $(pidof dwmblocks)") },
 
   { 0,                            XK_ISO_Next_Group,          spawn,     SHCMD("kill -39 $(pidof dwmblocks)") },
+
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },

@@ -170,7 +170,7 @@ static void (*bartabmonfns[])(Monitor *) = { NULL /* , customlayoutfn */ };
 #endif // MONOCLE_LAYOUT
 #endif // BAR_TABGROUPS_PATCH
 #if BAR_PANGO_PATCH
-static const char font[]                 = "JetBrainsMono Nerd Font 14";
+static const char font[]                 = "JetBrainsMono Nerd Font 12";
 #else
 static const char *fonts[]               = { "JetBrainsMono Nerd Font:size=12:style=SemiBold" };
 #endif // BAR_PANGO_PATCH
@@ -912,7 +912,7 @@ static const char *dmenucmd[] = {
 	"dmenu_run",
 	#if !NODMENU_PATCH
 	"-m", dmenumon,
-  "-p", "exec:",
+  "-p", "execute:",
 	#endif // NODMENU_PATCH
   "-c",
   "-bw", "3",
@@ -1087,8 +1087,10 @@ static const Key keys[] = {
 
   /* dmenu */
 	{ MODKEY,                       XK_p,          spawn,                  {.v = dmenucmd } },
+  { MODKEY|ShiftMask,             XK_p,          spawn,                  SHCMD("~/.local/sl/dmenu/scripts/launch-apps.sh") },
 	{ MODKEY,                       XK_n,          spawn,                  SHCMD("~/.local/sl/dmenu/scripts/power.sh") },
 	{ MODKEY|ShiftMask,             XK_n,          spawn,                  SHCMD("~/.local/sl/dmenu/scripts/systemd.sh") },
+
 
   /* volume and brightness control (<X11/XF86keysym.h> included) */
 	{ 0,                            XF86XK_AudioMute,           spawn,     SHCMD("pactl set-sink-mute 0 toggle") },
@@ -1106,7 +1108,7 @@ static const Key keys[] = {
   // { ShiftMask,				          	XK_Alt_L,      spawn,		               SHCMD("kill -39 $(pidof dwmblocks)") },
 	// { Mod1Mask,					          	XK_Shift_L,    spawn,		               SHCMD("kill -39 $(pidof dwmblocks)") },
 
-  { 0,                            XK_ISO_Next_Group,          spawn,     SHCMD("pkill -RTMIN+1 dwmblocks") },
+  { 0,                            XK_ISO_Next_Group,          spawn,     SHCMD("pkill -RTMIN+1 -f dwmblocks") },
 
 	#if RIODRAW_PATCH
 	{ MODKEY|ControlMask,           XK_p,          riospawnsync,           {.v = dmenucmd } },
